@@ -43,7 +43,7 @@ BIOS物理的搜索启动设备,并且载入每一个启动设备的启动扇区
 
 GRUB使用了多启动的规格，为了去执行32位的二进制程序，这个二进制程序必须包含一个特殊的头部在开始的第一个8192个字节。我们的内核将会是ELF的可执行文件("Executable and Linkable Format",一个在大多数UNIX系统中的可执行文件的通用的标准的文件格式)
 
-我们内核启动的第一步使用汇编写的[start.asm](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/blob/master/src/kernel/arch/x86/start.asm)我们使用连接器文件去定义我们可执行文件的结构[linker.ld](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/blob/master/src/kernel/arch/x86/linker.ld).
+我们内核启动的第一步使用汇编写的[start.asm](https://github.com/zyfjeff/zyfos/blob/master/src/kernel/arch/x86/start.asm)我们使用连接器文件去定义我们可执行文件的结构[linker.ld](https://github.com/zyfjeff/zyfos/blob/master/src/kernel/arch/x86/linker.ld).
 
 启动过程中也需要初始化我们的C++运行库，将会在下一个章节对这个部分进行描述。
 
@@ -86,7 +86,7 @@ struct multiboot_info {
 
 #### 为我们的内核和grub创建一个磁盘镜像
 
-这个脚本[diskimage.sh](https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System/blob/master/src/sdk/diskimage.sh) 将会通过使用QEMU帮助我们生成一个硬盘的镜像文件。
+这个脚本[diskimage.sh](https://github.com/zyfjeff/zyfos/blob/master/src/sdk/diskimage.sh) 将会通过使用QEMU帮助我们生成一个硬盘的镜像文件。
 
 第一步是使用qemu-img去生成一个硬盘镜像文件(c.img)。
 
@@ -187,4 +187,4 @@ losetup -d /dev/loop1
 ####  参见
 * [GNU GRUB on Wikipedia](http://en.wikipedia.org/wiki/GNU_GRUB)
 * [Multiboot specification](https://www.gnu.org/software/grub/manual/multiboot/multiboot.html)
-
+* [为什么MBR加载到0x7c00处](https://github.com/zyfjeff/zyfos/blob/master/附录/第三章/为什么MBR加载到内存0x7c00处.md)
