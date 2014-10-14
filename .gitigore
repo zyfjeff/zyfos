@@ -1,0 +1,12 @@
+#temporary files
+*~
+*.o
+.*
+
+#directory
+
+
+#files
+src/.vagrant/*
+src/lucid32.box
+
